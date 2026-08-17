@@ -1,0 +1,46 @@
+a)[1,11,121,1331,14641,161051,1771561] 
+ex1 x y = 1 : [11^x | x <- [1 .. y]]
+
+b) [1,2,3,5,6,7,9,10,11,13,14,15,17,18,19,21,22,23,25,26,27,29,30,31,33,34,35,37,38,39]	
+ex2 x = [x | x <- [0 .. x], x `mod` 4 /= 0]
+
+c)["AaBB","AbBB", "AcBB", "AdBB", "AeBB", "AfBB","AgBB"]	
+ex3 y = ["A" ++ [x] ++ "BB" | x <- ['a' .. y]]
+
+d)[5,8,11,17,20,26,29,32,38,41]
+ex4 x = [x | x <- [5 .. x], x `mod` 3 == 2]
+
+e)[1.0,0.5,0.25,0.125,0.0625,0.03125]
+ex5 x  = [0.5^x | x <- [0 .. x]]
+
+f)[1,10,19,28,37,46,55,64]	
+ex6 x = 1:[x*10-x+1 | x <- [1 .. x]]
+
+g)[2,4,8,10,12,16,18,22,24,28,30]
+ex7 x = [x | x<-[2 .. x], x/=3, x/=5, x/=6, x/=7, x/=11, x/=13, x/=14, x/=15, x/=17, x/=19, x/=20, x/=21, x/=23, x/=25, x/=26, x/=27, x/=29]	- vai se foder Garcia, isso não faz sentido não poder ser recursivo cara, chapou mt nisso slc 
+
+h)['@','A','C','D','E','G','J','L']	
+Chitei fodase – usei char
+ex8 x = [chr x | x <- [64 ..x], x `mod` 7 >= 1, x `mod` 7 /=3, x == 69 || rem x 3 /= 0 ]   
+
+ex8 x = [[x] | (x,i) <- zip ['@'..'Z'] [64..x], i `mod` 7 >= 1, i `mod` 7 /=3, i == 69 || rem i 3 /= 0 ]
+solução sem Char usando zip para criar uma lista com caracteres numerados como o ASCII
+
+2.2) Crie uma função que verifique se o tamanho de uma String é par ou não. Use Bool como retorno
+ex9 x = even (length x)
+
+2.3) Escreva uma função que receba um vetor de Strings e retorne uma lista com todos os elementos em ordem reversa.
+ex10 x  = [reverse x | x <- x]
+
+2.4) Escreva uma função que receba um vetor de Strings e retorne uma lista com o tamanho de cada String. As palavras de tamanho par devem ser excluídas da resposta.
+ex11 x = [length x | x <- x, fromEnum (even(length x))/= 1]
+
+2.5) Escreva a função head	 como composição de duas outras.
+ex12 x = (last . reverse) x
+
+2.6) Faça uma função que receba uma String e retorne True se esta for um palíndromo; caso contrário, False .
+ex13 x = (reverse x)==x
+
+2.7 Faça uma função que receba um inteiro e retorne uma tupla, contendo: o dobro deste número na primeira coordenada, o triplo na segunda, o quádruplo na terceira e o quíntuplo na quarta.
+
+ex14 x = ((x),(x*2),(x*3),(x*4),(x*5))
