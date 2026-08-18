@@ -66,3 +66,5 @@ converterFahrenheit x Celsius = (x * 9/5) + 32
 converterFahrenheit x Kelvin = (x - 273.1) * 9/5 + 32
 converterFahrenheit x Fahrenheit = x
 -- converterFahrenheit _ _ = "Não pode inserir String, caso tenha inserido valor deve escolher entre Kelvin ou Celsius"
+
+ex34 xs = [x | x <- xs, x `elem` "AEIOUaeiou"]
