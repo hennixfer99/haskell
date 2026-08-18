@@ -48,22 +48,21 @@ not' _ _ = pergNum Sim
 
 
 data Graus = Celsius | Fahrenheit | Kelvin deriving Show
-data Conversao = Conversao {Valor :: Double, nome :: String} deriving Show
 
-converterCelsius :: Double -> Graus -> Double || String
+converterCelsius :: Double -> Graus -> Double
 converterCelsius x Fahrenheit = (x - 32) * 5/9 
 converterCelsius x Kelvin = x + 273.1
 converterCelsius x Celsius = x
-converterCelsius _ _ = "Não pode inserir String, caso tenha inserido valor deve escolher entre Kelvin ou Farenheit" 
+-- converterCelsius _ _ = "Não pode inserir String, caso tenha inserido valor deve escolher entre Kelvin ou Farenheit" 
 
-converterKelvin :: Double -> Graus -> Double || String
+converterKelvin :: Double -> Graus -> Double
 converterKelvin x Fahrenheit = ((x - 32) * 5/9) + 273.15 
 converterKelvin x Celsius = x + 273.1
 converterKelvin x Kelvin = x
-converterKelvin _ _ = "Não pode inserir String, caso tenha inserido valor deve escolher entre Celsius ou Farenheit"
+-- converterKelvin _ _ = "Não pode inserir String, caso tenha inserido valor deve escolher entre Celsius ou Farenheit"
 
-converterFahrenheit :: Double -> Graus -> Double || String
+converterFahrenheit :: Double -> Graus -> Double
 converterFahrenheit x Celsius = (x * 9/5) + 32 
 converterFahrenheit x Kelvin = (x - 273.1) * 9/5 + 32
 converterFahrenheit x Fahrenheit = x
-converterFahrenheit _ _ = "Não pode inserir String, caso tenha inserido valor deve escolher entre Kelvin ou Celsius"
+-- converterFahrenheit _ _ = "Não pode inserir String, caso tenha inserido valor deve escolher entre Kelvin ou Celsius"
