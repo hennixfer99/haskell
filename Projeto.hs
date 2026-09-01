@@ -202,7 +202,9 @@ revNum s n =  reverse (take n s) ++ reverse (take (length s - n) (reverse s))
 
 --ex3.11
 
-data Binario = Zero | Um deriving Show
+
+data Binario = Zero | Um deriving (Show, Eq)
+
 data Funcao = Soma2 | Maior | Menor | Mult2 deriving Show
 
 aplicar :: Funcao -> Binario -> Binario -> Binario
@@ -227,9 +229,47 @@ aplicar Mult2 Zero Um = Zero
 aplicar Mult2 Um Zero = Zero
 aplicar Mult2 Um Um = Um
 
+
 --ex3.12
 
--- binList :: [Binario] -> [Int]
+binList :: [Binario] -> [Int]
+
+binList xs = [if x == Um then 0 else 1 | x <- xs]
+--
+
+--ex3.13
+
+data Metros = Metros {dimensao :: Int, valor :: Double} deriving Show
+
+areaQuadrado :: Metros -> Metros
+
+areaQuadrado x =  Metros (dimensao x) (valor x^2)
+
+areaRet :: Metros -> Metros -> Metros
+
+areaRet x y = Metros (dimensao x) ((valor x * valor y)/2)
+
+areaCubo :: Metros -> Metros
+
+areaCubo x = Metros (dimensao x) (valor x^3)
+
+--ex3.14
+
+data Valido = Valido {sim :: String, nao :: String} deriving Show
+
+isNomeValido :: String -> Valido
+
+isNomeValido x = if length x > 0 then Valido {sim = "Nome valido", nao = ""} else Valido {sim = "", nao = "Nome invalido"}
+
+--ex3.15
+c)["AaBB","AbBB", "AcBB", "AdBB", "AeBB", "AfBB","AgBB"]	
+ex3 y = ["A" ++ [x] ++ "BB" | x <- ['a' .. y]]
+
+
+
+
+
+
 
 myst :: (Num a, Ord a) => [a] -> [a]
 myst [] = []
@@ -237,4 +277,5 @@ myst (x:xs) = myst smaller ++ [x] ++ myst bigger
     where
         smaller = filter (< x) xs
         bigger = filter (>= x) xs
+
 
