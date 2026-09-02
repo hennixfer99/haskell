@@ -259,16 +259,18 @@ data Valido = Valido {sim :: String, nao :: String} deriving Show
 
 isNomeValido :: String -> Valido
 
-isNomeValido x = if length x > 0 then Valido {sim = "Nome valido", nao = ""} else Valido {sim = "", nao = "Nome invalido"}
+isNomeValido x = if length x > 0 then (Valido "Valido" "") else (Valido "" "Invalido")
+-- --ex3.15
+-- c)["AaBB","AbBB", "AcBB", "AdBB", "AeBB", "AfBB","AgBB"]	
+-- ex3 y = ["A" ++ [x] ++ "BB" | x <- ['a' .. y]]
 
---ex3.15
-c)["AaBB","AbBB", "AcBB", "AdBB", "AeBB", "AfBB","AgBB"]	
-ex3 y = ["A" ++ [x] ++ "BB" | x <- ['a' .. y]]
+--ex 3.16
 
+data Numero = Numero {ok :: Double, erro :: String} deriving Show
 
+dividir :: Numero -> Numero -> Numero
 
-
-
+dividir x y = if ok y == 0 then (Numero 0.00 "Divisao por zero nao permitida") else (Numero (ok x / ok y) "")
 
 
 myst :: (Num a, Ord a) => [a] -> [a]
